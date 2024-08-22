@@ -1091,11 +1091,11 @@ input[type="checkbox"]:checked:after {
         }
         .section01 .inner .item:nth-child(2) {
             background: url('../img/change02.png') center center no-repeat;
-
+            background-size: cover;
         }
         .section01 .inner .item:last-child {
             background: url('../img/change03.png') center center no-repeat;
-           
+            background-size: cover;
         }
         .s1 p {
             left: 15%;
