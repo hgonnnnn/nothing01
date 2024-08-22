@@ -126,7 +126,7 @@
     height: 100vh;
     background-color: #fff;
     position: fixed;
-    top: 0;  /* 반응형 수정 */
+    top: 0;  
     right: -100%;
     z-index: 9;
     border-left: 2px dotted #000;

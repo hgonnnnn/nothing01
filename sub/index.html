@@ -71,9 +71,13 @@
                     if (3900 < scrollBar) {
                         section04Item.classList.add('scroll_on');
                         section04Img.classList.add('scroll_on');
+
+                        section04Img.animate({right : '0'},1000,'easeInOutQuad');
                     } else {
                         section04Item.classList.remove('scroll_on');
                         section04Img.classList.remove('scroll_on');
+
+                        section04Img.animate({right : '-100%'},1000,'easeInOutQuad');
                     }
                 } else {
                     section02.classList.add('scroll_on');
@@ -232,7 +236,8 @@
                     </p>
                 </div>
             </div><!-- .item_wrap end -->
-            <img src="img/section04_ear.png" alt="낫싱이어 블랙">
+            <img src="img/section04_ear.png" alt="낫싱이어 블랙" class="pc_ear">
+            <img src="img/change01.png" alt="낫싱블랙 모바일" class="mobile_ear">
         </div><!-- .inner end -->
     </section><!-- .section04 end -->
 
@@ -252,7 +257,8 @@
                         몰입감 있는 음악 감상을 즐겨보세요.</p>
                 </div>
             </div><!-- .item_wrap end -->
-            <img src="img/section05.png" alt="낫싱이어">
+            <img src="img/section05.png" alt="낫싱이어" class="pc_ear2">
+            <img src="img/mobile03.png" alt="낫싱이어 모바일" class="mobile_ear2">
         </div><!-- .inner end -->
     </section><!-- .section05 end -->
 
