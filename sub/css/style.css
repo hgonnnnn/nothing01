@@ -447,6 +447,7 @@ body {
     font-family: 'semibold';
     font-size: 18px;
     color: #868686;
+    line-height: 1.4;
 }
 .section06 .inner .text p span {
     color: #000;
@@ -1207,6 +1208,10 @@ input[type="checkbox"]:checked:after {
     }
     .section09 .inner .item_wrap {
         flex-direction: column;
+        row-gap: 30px;
+    }
+    .section09 .inner .item_wrap .item .text {
+        width: 80%;
     }
     .section09 .inner .item_wrap .item {
         width: 100%;
@@ -1256,6 +1261,9 @@ input[type="checkbox"]:checked:after {
 
 }
 @media screen and (max-width: 430px) {
+    .section09 .inner .item_wrap .item .text p {
+        font-size: 14px;
+    }
     .swiper-3d {
         perspective: 400px !important;
     }
@@ -1298,7 +1306,9 @@ input[type="checkbox"]:checked:after {
     .header02 .inner .text {
         column-gap: 25px;
     }
-    
+    .section10 .inner .item_wrap .item .item02 .box01 p, .section10 .inner .item_wrap .item .item02 .box03 p, .section10 .inner .item_wrap .item .item02 .box02 {
+        font-size: 16px;
+    }
     .section01, .section03 {
         margin: 60px auto
     }
@@ -1315,14 +1325,15 @@ input[type="checkbox"]:checked:after {
     .section02 .inner, .section04 .inner, .section05 .inner, .section06 .inner, .section07 .inner, .section08 .inner, .section09 .inner, .section10 .inner {
         margin: 60px auto;
     }
-    .swiper-slide .text h4, .section09 .inner .item_wrap .item .text h4 {
-        font-size: 18px;
-    }
     .section02 .inner .item p, .section04 .inner .item p, .section05 .inner .item p, .section06 .inner .text p, .section09 .inner > p, .section10 .inner a, .swiper-slide .text p, .section08 .inner .item_wrap .left .option > li .depth02 li a {
-        font-size: 14px;
-    }
-    .section08 .inner .item_wrap .left .option > li .depth01,.swiper-slide .text h4, .section09 .inner .item_wrap .item .text h4 {
         font-size: 16px;
+    }
+    .section08 .inner .item_wrap .left .option > li .depth01,.swiper-slide .text h4{
+        font-size: 16px;
+    }
+    .section09 .inner .item_wrap .item .text h4  {
+        font-size: 16px;
+        margin-bottom: 15px;
     }
     .section10 .inner .item_wrap .item > img {
         width: 80%;
