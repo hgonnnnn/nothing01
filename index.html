@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTHING리뉴얼</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- <link rel="stylesheet" href="css/swiper-bundle.min.css"> -->
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        $(function () {
+            /* 슬라이드 */
+            var swiper = new Swiper(".main", {
+                spaceBetween: 30,
+                centeredSlides: true,
+                loop: true,
+                speed:400,
+                effect : 'fade',
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    type: "progressbar",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+
+            /* section07 hover 설정 */
+            $('.section07 .inner .item').mouseenter(function(){
+                $(this).addClass('on');
+                $(this).find('.text').stop().fadeIn();
+            });
+            $('.section07 .inner .item').mouseleave(function(){
+                let itemBg = $('.section07 .inner .item');
+                // $(this).find('.text').css({'display': 'none'});
+                $(this).find('.text').stop().fadeOut();
+
+                itemBg.removeClass('on');
+            });
+
+            /* 구매하기 버튼 hover 시 설정 */
+            $('.buy').mouseenter(function(){
+                $(this).css({
+                    'color' : '#fff',
+                    'backgroundColor' : '#e4242a',
+                    'transition' : '0.4s',
+                    'transform' : 'scale(0.94)'
+                });
+            });
+            $('.buy').mouseleave(function(){
+                $(this).css({
+                    'color' : '',
+                    'backgroundColor' : '',
+                    'transform' : 'scale(1)'
+                });
+            });
+
+            /* up 버튼 */
+            $('.up_btn').click(function(){
+                $('html, body').animate({
+                    scrollTop : 0
+                }, 700)
+            });
+            $(window).scroll(function(){
+                /* scrollTop값이 0이면 up버튼 사라짐 */
+                if($(window).scrollTop() > 0) {
+                    $('.up_btn').css({
+                        'display' : 'block'
+                    })
+                } else {
+                    $('.up_btn').css({
+                        'display' : 'none'
+                    })
+                    $('header').removeClass('on');
+                }
+            });
+
+            // 스크롤 시 콘텐츠 나타내기
+            window.addEventListener('scroll', function () {
+                let section02 = document.querySelector('.section02')
+                let section03 = document.querySelector('#section03')
+                let section04 = document.querySelector('.section04')
+                let section05 = document.querySelector('.section05')
+                let section06 = document.querySelector('.section06')
+                let scrollBar = window.scrollY;
+                const Height = window.pageYOffset;
+                
+                /* width값 1024보다 크거나 같을 때 적용됨. */
+              if($(window).width() >= 1024) {
+                /* section02 */
+                if(1000 < scrollY) {
+                    section02.classList.add('scroll_on');
+                    // alert()
+                } else {
+                    section02.classList.remove('scroll_on');
+                }
+                /* section03 */
+                if(1750 < scrollY) {
+                    section03.classList.add('scroll_on');
+                } else {
+                    section03.classList.remove('scroll_on');
+                }
+                /* section04 */
+                if (2500 < scrollY) {
+                    section04.classList.add('scroll_on');
+                } else {
+                    section04.classList.remove('scroll_on');
+
+                }
+                /* section05 */
+                if (3200 < scrollY) {
+                    section05.classList.add('scroll_on');
+                } else {
+                    section05.classList.remove('scroll_on');
+
+                }
+                /* section06 */
+                if (3900 <scrollY) {
+                    section06.classList.add('scroll_on')
+                } else {
+                    section06.classList.remove('scroll_on');
+
+                }
+                console.log(scrollBar); // 하단에 배치 해야함
+                }
+                /* 1024보다 작을 때 클래스명 add하여 초기화 설정. */
+                if($(window).width() < 1024) {
+                    section02.classList.add('scroll_on');
+                    section03.classList.add('scroll_on');
+                    section04.classList.add('scroll_on');
+                    section05.classList.add('scroll_on');
+                    section06.classList.add('scroll_on');
+    
+                }
+            });
+            colsole.log(scrollBar); // 하단에 배치 해야함
+        
+            }); //script end
+    </script>
+</head>
+
+<body>
+    <button class="up_btn">
+        <img src="img/icon/up.png" alt="맨위로 이동">
+    </button>
+    <header id="header"></header><!-- #header -->
+    <div class="main_visual">
+        <!-- Swiper -->
+        <div class="swiper main">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide s1">
+                    <img src="img/main_visual02.jpg" alt="메인 이미지01">
+                    <img src="img/mobile_main_visual02.png" alt="" class="mobile_main">
+                    <p><span>About</span><br><span>NOTHING</span></p>
+                </div>
+                <div class="swiper-slide s2">
+                    <img src="img/222222222222x.jpg" alt="메인 이미지02">
+                    <p><span>독보적인 유니크함</span><br><span>Phone (2a)</span></p>
+                </div>
+                <div class="swiper-slide s3" data-swiper-autoplay="28000">
+                    <video autoplay loop muted>
+                        <source src="img/video/cc5eea4173044619bd0828550214634e.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="swiper-slide s4">
+                    <video autoplay loop muted>
+                        <source src="img/video/a6216e776a2246bab5357f309f6f2e69.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div><!-- .main_visual end -->
+
+    <section class="section01">
+        <div class="inner">
+            <div class="item">
+                <img src="img/section01_배경추가3.jpg" alt="낫싱폰">
+                <div class="text">
+                    <h2>Phone</h2>
+                    <a href="#"><p>Phone 모두 살펴보기</p>
+                        <img src="img/icon/right_red.png" alt="바로가기">
+                    </a>
+                </div>
+            </div><!-- .item end -->
+            <div class="item">
+                <img src="img/section01_배경추가2.jpg" alt="CMF">
+                <div class="text">
+                    <h2>CMF</h2>
+                    <a href="#"><p>CMF 모두 살펴보기</p>
+                        <img src="img/icon/right_red.png" alt="바로가기">
+                    </a>
+                </div>
+            </div><!-- .item end -->
+            <div class="item">
+                <img src="img/section01_배경추가1.jpg" alt="낫싱이어">
+                <div class="text">
+                    <h2>Ear</h2>
+                    <a href="#"><p>Ear 모두 살펴보기</p>
+                        <img src="img/icon/right_red.png" alt="바로가기">
+                    </a>
+                </div>
+            </div><!-- .item end -->
+
+        </div><!-- .inner end -->
+    </section><!-- .section01 end -->
+
+    <section class="section02">
+        <div class="inner">
+            <div class="text">
+                <h3>Phone 2(a) Plus</h3>
+                <p>놀라운 세계, 새로운 경험</p>
+                <button>더 알아보기</button>
+                <p>7월 31일, 18:00 KST.</p>
+            </div>
+        </div>
+    </section><!-- .section02 end -->
+     
+    <div id="section03">
+        <section class="section03">
+            <div class="inner">
+                <div class="text">
+                    <h3>Phone 2(a) <br>
+                        Special Edition</h3>
+                    <p>새로운 컬러, 새로운 도전, 새로운 출발.</p>
+                    <button class="more">더 알아보기</button>
+                    <button class="buy">구입하기</button>
+                </div>
+                <div class="award">
+                    <img src="img/reddot_award_white.png" alt="레드닷수상">
+                </div><!-- .award end -->
+            </div>
+        </section><!-- .section03 end -->
+    </div>
+
+    <section class="section04">
+        <div class="inner">
+            <div class="text">
+                <h3>Phone 2</h3>
+                <p>새로운 아이콘이 탄생했습니다.</p>
+                <button class="more">더 알아보기</button>
+                <button class="buy">구입하기</button>
+            </div>
+            <div class="award">
+                <img src="img/reddot_award2.png" alt="레드닷수상">
+            </div><!-- .award end -->
+        </div>
+    </section><!-- .section04 end -->
+
+    <section class="section05">
+        <div class="inner">
+            <div class="text">
+                <h3>Ear</h3>
+                <p>한층 진화된 사운드.</p>
+                <button type="button" onclick="location.href='sub'" class="more">더 알아보기</button>
+                <button class="buy">구입하기</button>
+            </div>
+        </div>
+    </section><!-- .section05 end -->
+
+    <section class="section06">
+        <div class="inner">
+            <div class="text">
+                <h3>Ear(a)</h3>
+                <p>즐길 때가 왔습니다.</p>
+                <button class="more">더 알아보기</button>
+                <button class="buy">구입하기</button>
+            </div>
+            <div class="award">
+                <img src="img/reddot_award.png" alt="레드닷수상">
+            </div><!-- .award end -->
+        </div>
+    </section><!-- .section05 end -->
+
+    <section class="section07">
+        <div class="inner">
+            <div class="item">
+                <img src="img/01.png" alt="액세서리">
+                <div class="text">
+                    <h3>액세서리</h3>
+                    <span>당신의 스타일을 더욱 돋보이게 해줄 액세서리를
+                        선택하세요.</span>
+                    <a href="#"><p>액세서리 모두 살펴보기</p>
+                        <img src="img/icon/right_red.png" alt="바로가기"></a>
+                </div>
+            </div><!-- .item end -->
+            <div class="item">
+                <img src="img/02.png" alt="낫싱어페럴">
+                <div class="text">
+                    <h3>Nothing Apparel</h3>
+                    <span>Nothing과 함께 당신만의 특별한 스타일을
+                        완성하세요.</span>
+                    <a href="#"><p>Apparel 모두 살펴보기</p>
+                        <img src="img/icon/right_red.png" alt="바로가기"></a>
+                </div>
+            </div><!-- .item end -->
+        </div><!-- .inner end -->
+    </section><!-- .section07 end -->
+
+    <section class="sns">
+        <figure>
+            <img src="img/icon/sns_Default.png" alt="인스타그램">
+        </figure>
+        <figure>
+            <img src="img/icon/sns_Default-4.png" alt="페이스북">
+        </figure>
+        <figure>
+            <img src="img/icon/sns_Default-1.png" alt="유튜브">
+        </figure>
+        <figure>
+            <img src="img/icon/sns_Default-2.png" alt="틱톡">
+        </figure>
+        <figure>
+            <img src="img/icon/sns_Default-3.png" alt="트위터">
+        </figure>
+    </section><!-- .sns end -->
+
+    <section class="etc">
+        <div class="text">
+            <span>Wallpaper*</span>
+            <p>“A radical reinterpretation of mobile tech”</p>
+        </div>
+        <div class="text">
+            <span>Highsnobiety</span>
+            <p>"Boundary-pushing aesthetics"</p>
+        </div>
+        <div class="text">
+            <span>GQ</span>
+            <p>“The most hyped tech company in years”</p>
+        </div>
+    </section><!-- .etc end -->
+
+    <footer class="footer">
+        <div class="inner">
+            <div class="left">
+                <div class="item_wrap">
+                    <div class="item">
+                        <ul>
+                            <strong>제품</strong>
+                            <li><a href="#">Phone (2a)</a></li>
+                            <li><a href="#">Phone (2)</a></li>
+                            <li><a href="#">Ear (a)</a></li>
+                            <li><a href="#">Ear</a></li>
+                            <li><a href="#">Apparel</a></li>
+                            <li><a href="#">액세서리</a></li>
+                        </ul>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <ul>
+                            <strong>소개</strong>
+                            <li><a href="#">회사 소개</a></li>
+                            <li><a href="#">채용</a></li>
+                            <li><a href="#">커뮤니티</a></li>
+                            <li><a href="#">지속 가능성</a></li>
+                            <li><a href="#">비즈니스 문의</a></li>
+                            <li><a href="#">보도자료</a></li>
+                        </ul>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <ul>
+                            <strong>지원</strong>
+                            <li><a href="#">지원 센터</a></li>
+                            <li><a href="#">문의 하기</a></li>
+                            <li><a href="#">매장 찾기</a></li>
+                            <li><a href="#">개인정보 보호</a></li>
+                        </ul>
+                    </div><!-- .item end -->
+                </div><!-- .item_wrap end -->
+            </div><!-- .left end -->
+            <div class="right">
+
+                <h4>뉴스레터 구독</h4>
+
+                <div class="email">
+                    <input type="email" required>
+                    <label><p>e-mail을 입력하세요.</p></label>
+                    <a href="#"><img src="img/icon/right_white.png" alt="제출하기"></a>
+                    <span></span>
+                </div><!-- .email end -->
+
+                <div class="check">
+                    <ul>
+                        <li>
+                            <input type="checkbox" name="check2" id="agree1">
+                            <label for="agree1">
+                                개인정보 수집 및 이용에 동의합니다.
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="check2" id="agree2">
+                            <label for="agree2">
+                                NOTHING 마케팅 커뮤니케이션 수신에 동의합니다.
+                            </label>
+                        </li>
+                    </div>
+                </ul><!-- .check end -->
+            </div><!-- .right end -->
+        </div><!-- .inner end -->
+        <div class="bottom">
+            <ul>
+                <li><a href="#">개인정보 처리방침</a></li>
+                <p>｜</p>
+                <li><a href="#">이용 약관</a></li>
+                <p>｜</p>
+                <li><a href="#">판매 및 환불</a></li>
+                <p>｜</p>
+                <li><a href="#">법적 고지</a></li>
+            </ul>
+        </div><!-- .bottom end -->
+    </footer><!-- .footer end -->
+</body>
+
+</html>

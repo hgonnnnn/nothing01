@@ -1,0 +1,258 @@
+<script>
+    /* 깃허브에 업로드 시 경로가 다르므로 js 파일에서 ../ 제거 후 업로드 해야함. */
+
+    /* PC 네비게이션 설정 */
+    $('.header .pc_nav .gnb > li').mouseenter(function () {
+
+        /* depth02가 없으면 bg 안나타남. */
+        if ($(this).find('.depth02').length) {
+            /* find: 자식, 자손 => length: 존재여부 확인*/
+            $('.nav_bg').css({
+                'display': 'block'
+            }).delay(1000);
+        }
+        $(this).children('.depth02').stop().slideDown();
+        $('.no').mouseenter(function () {
+            $('.nav_bg').css('display', 'none');
+            });
+        $('.menu_bar').addClass('on');
+    });
+
+    $('.header .pc_nav .gnb > li').mouseleave(function () {
+        $('.depth02').stop().slideUp(100);
+        $('.nav_bg').css({
+            'display': 'none'
+        })
+        $('.menu_bar').removeClass('on');
+    });
+
+    /* 모바일 네비게이션 */
+
+    /* 메뉴 버튼 열고 닫기 */
+    $('.open').click(function () {
+        $('.mobile_nav').animate({ right : '0'},700, 'easeInOutQuart');
+        $('.bg').toggleClass('on');
+        /* 마우스 휠 막기 */
+        $('body').on('scroll touchmove mousewheel', function () {
+            return false;
+        })
+        $('body').addClass('on');
+    });
+    $('.close').click(function () {
+        // $('.mobile_nav').removeClass('');
+        $('.mobile_nav').animate({ right : '-100%'});
+        $('.bg').removeClass('on');
+        /* 마우스 휠 막기 */
+        $('body').off('scroll touchmove mousewheel');
+        $('body').removeClass('on');
+
+        $('.depth01').next().slideUp();
+        $('.depth01').css({
+            'color': '#000'
+        })
+    });
+    /* 2차메뉴 나타내기 */
+    $('.mobile_nav .depth01').click(function () {
+        if ($(this).next().css('display') === 'none') {
+            $('.depth02').slideUp();
+            $(this).next().slideDown();
+            $('.depth01').css({
+                'color': '#000'
+            })
+            $(this).css({
+                'color': '#e4242a'
+            })
+        } else {
+            $(this).next().slideUp();
+            $('.depth01').css({
+                'color': '#000'
+            })
+        }
+
+    });
+    $('.mobile_nav .no').click(function () {
+        $('.depth02').slideUp();
+        $('.no').css({
+            'color': '#000'
+        })
+        $(this).css({
+            'color': '#e4242a'
+        })
+    });
+
+    /* 여백 클릭해도 모바일메뉴 닫기 */
+    $('.bg').click(function () {
+        // $('.mobile_nav').slideUp();
+        $('.mobile_nav').animate({ right : '-100%'});
+        $(this).removeClass('on');
+        $('.depth01').next().slideUp();
+        $('.depth01').css({
+            'color': '#000'
+        });
+        $('body').off('scroll touchmove mousewheel');
+        $('body').removeClass('on');
+
+    });
+
+    /* 스크롤 시 헤더 나타나고 사라지기 */
+    window.addEventListener('wheel', (event) => {
+        let wheelScroll = event.deltaY;
+        let header = document.querySelector('.header');
+
+        if (wheelScroll > 0) {
+            // header.style.display = 'none'
+            header.classList.add('on');
+           
+        } else {
+            // header.style.display = 'block'
+            header.classList.remove('on');
+            
+        }
+    });
+    /* 메뉴바 하단 움직이는 바 */
+    let menuWidth = $('.pc_nav .gnb > li').outerWidth();
+    $('.menu_bar').css('width', menuWidth);
+
+    $('.pc_nav .gnb > li').mouseenter(function () {
+        let move = $(this).position().left;
+        let liWidth = $(this).outerWidth();
+
+        $('.menu_bar').stop().animate({
+            'left': move,
+            'width': liWidth
+        });
+    });
+
+</script>
+
+<header class="header">
+
+    <div class="bg">
+        <span>.</span>
+    </div>
+
+    <div class="inner">
+        <h1>
+            <a href="#">
+                <img src="img/logo.png" alt="로고">
+            </a>
+        </h1>
+
+        <nav class="pc_nav pc">
+            <ul class="gnb">
+                <li>
+                    <a href="#" class="depth01">Store</a>
+                    <ul class="depth02">
+                        <li><a href="#">View all</a></li>
+                        <li><a href="#">악세사리</a></li>
+                        <li><a href="#">Apparel</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="depth01">Phone</a>
+                    <ul class="depth02">
+                        <li><a href="#">View all</a></li>
+                        <li><a href="#">Phone (2)</a></li>
+                        <li><a href="#">Phone (2a)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="depth01">Audio</a>
+                    <ul class="depth02">
+                        <li><a href="#">View all</a></li>
+                        <li><a href="#">Ear</a></li>
+                        <li><a href="#">Ear (a)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="depth01 no">CMF</a>
+                </li>
+                <li>
+                    <a href="#" class="depth01 no">Community</a>
+                </li>
+                <li>
+                    <a href="#" class="depth01">Support</a>
+                    <ul class="depth02">
+                        <li><a href="#">문제 해결</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">제품 가이드</a></li>
+                        <li><a href="#">Nothing X</a></li>
+                        <li><a href="#">수리</a></li>
+                        <li><a href="#">문의하기</a></li>
+                    </ul>
+                </li>
+                <div class="nav_bg">
+                    <span>bg</span>
+                </div>
+                <div class="menu_bar">
+                    <span>메뉴바</span>
+                </div><!-- .menu_bar end -->
+            </ul><!-- .gnb end -->
+        </nav><!-- .pc_nav end -->
+
+        <div class="util">
+            <button>
+                <img src="img/icon/search.png" alt="서치">
+            </button>
+            <button>
+                <img src="img/icon/user.png" alt="유저">
+            </button>
+            <button>
+                <img src="img/icon/bag.png" alt="장바구니">
+            </button>
+            <button class="open">
+                <img src="img/icon/menu.png" alt="메뉴">
+            </button>
+        </div><!-- .util end -->
+
+        <nav class="mobile_nav mobile">
+            <button class="close">
+                <img src="img/icon/delete.png" alt="닫기">
+            </button>
+            <ul class="gnb">
+                <li>
+                    <a href="#" class="depth01">Store</a>
+                    <ul class="depth02">
+                        <li><a href="#">View all</a></li>
+                        <li><a href="#">악세사리</a></li>
+                        <li><a href="#">Apparel</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="depth01">Phone</a>
+                    <ul class="depth02">
+                        <li><a href="#">View all</a></li>
+                        <li><a href="#">Phone (2)</a></li>
+                        <li><a href="#">Phone (2a)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="depth01">Audio</a>
+                    <ul class="depth02">
+                        <li><a href="#">View all</a></li>
+                        <li><a href="#">Ear</a></li>
+                        <li><a href="#">Ear (a)</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="depth01 no">CMF</a>
+                </li>
+                <li>
+                    <a href="#" class="depth01 no">Community</a>
+                </li>
+                <li>
+                    <a href="#" class="depth01">Support</a>
+                    <ul class="depth02">
+                        <li><a href="#">문제 해결</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">제품 가이드</a></li>
+                        <li><a href="#">Nothing X</a></li>
+                        <li><a href="#">수리</a></li>
+                        <li><a href="#">문의하기</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- .mobile_nav end -->
+
+    </div><!-- .inner end -->
+</header><!-- .header end -->

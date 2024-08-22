@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+} /* 필수 */
+
+a {
+    background-color: transparent;
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    line-height: 1;
+    color: #000;
+}
+
+button {
+    overflow: visible;
+    text-transform: none;
+}

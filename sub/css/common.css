@@ -1,0 +1,208 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'semibold';
+    src: url('../폰트/프리텐다드/Pretendard-SemiBold.eot');
+    src: url('../폰트/프리텐다드/Pretendard-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../폰트/프리텐다드/Pretendard-SemiBold.woff2') format('woff2'),
+        url('../폰트/프리텐다드/Pretendard-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'medium';
+    src: url('../폰트/프리텐다드/Pretendard-Medium.eot');
+    src: url('../폰트/프리텐다드/Pretendard-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../폰트/프리텐다드/Pretendard-Medium.woff2') format('woff2'),
+        url('../폰트/프리텐다드/Pretendard-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+/* .header.on {
+    opacity: 0;
+    transform: translateY(-100%);
+} */
+.header {
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px dotted #000;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 5;
+
+    opacity: 1;
+    transition: 0.3s;
+}
+.header .inner {
+    max-width: 1280px;
+    width: calc(100% - 30px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.header .inner h1 a {
+    display: block;
+}
+.header .inner h1 a img {
+    width: 250px;
+}
+.header .pc_nav {
+    height: 100%;
+    /* line-height: 100px; */
+}
+.header .pc_nav .gnb {
+    display: flex;
+    column-gap: 35px;
+}
+.header .pc_nav .gnb > li {
+    position: relative;
+}
+.header .pc_nav .gnb > li .depth01 {
+    display: block;
+    font-size: 18px;
+    line-height: 100px;  /*반응형 수정 */
+    font-family: 'semibold';
+}
+.header .pc_nav .gnb .nav_bg {
+    width: 100%;
+    height: 300px;  /* 반응형 수정 */
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    top: 100px;   /* 반응형 수정 */
+    left: 0;
+    display: none;
+    z-index: 2;
+}
+.header .pc_nav .gnb .nav_bg span {
+    position: absolute;
+    top: -999999999999999999px;
+}
+.header .pc_nav .gnb > li .depth02 {
+    display: none;
+    font-family: 'medium';
+    width: 100px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    text-align: left;
+    z-index: 5;
+}
+.header .pc_nav .gnb > li .depth02.on {
+    display: block;
+}
+.header .pc_nav .gnb > li .depth02 > li {
+    padding: 15px 0;
+}
+.header .pc_nav .gnb > li .depth02 > li:hover {
+    font-weight: bold;
+    /* transform: scale(1.02); */
+}
+.header .pc_nav .gnb > li .depth02 > li a {
+    width: 100%;
+}
+.header .inner .util {
+    display: flex;
+    column-gap: 40px;
+}
+.header .inner .util button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.header .inner .util button img {
+    width: 24px;
+    object-fit: cover;
+}
+.header .mobile_nav {
+    width: 40%;
+    height: 100vh;
+    background-color: #fff;
+    position: fixed;
+    top: 0;  /* 반응형 수정 */
+    right: -100%;
+    z-index: 9;
+    border-left: 2px dotted #000;
+
+}
+.header .mobile_nav button {
+    position: absolute;
+    top: 30px;
+    right: 10%;
+    border: none;
+    background-color: transparent;
+}
+.header .mobile_nav button img {
+    width: 40px;
+}
+.header .mobile_nav .gnb {
+    margin-top: 100px;
+    position: relative;
+}
+.header .mobile_nav .gnb > li {
+    font-family: 'semibold';
+    font-size: 18px;
+    padding: 20px;
+    text-align: left;
+}
+.header .mobile_nav .gnb > li .depth01 {
+    display: block;
+    width: 80%;
+    border-bottom: 2px dotted #000;
+}
+.header .mobile_nav .gnb > li .depth02 {
+    display: none;
+    font-family: 'medium';
+    padding: 20px 0;
+}
+.header .mobile_nav .gnb > li .depth02 li {
+    padding: 10px 0;
+}
+.header .mobile_nav .gnb > li .depth02 li:hover {
+    font-weight: bold;
+    /* transform: scale(1.02); */
+}
+
+.bg span {
+    position: absolute;
+    top: -999999999999px;
+}
+.bg {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+.bg.on {
+    display: block;
+}
+
+
+.menu_bar {
+    width: 100px;
+    height: 2px;
+    background-color: #e4242a;
+    position: absolute;
+    left: 50%;
+    bottom: 30px;
+    pointer-events: none;
+    display: none;
+}
+.menu_bar.on {
+    display: block;
+}
+.menu_bar span {
+    position: absolute;
+    left: -999999999999999999px;
+}

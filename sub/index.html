@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTHING리뉴얼(서브)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /><!-- swiper slide -->
+
+    <script src="lib/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script><!-- swiper slide -->
+    <script src="lib/jquery-ui.min.js"></script>
+    <script src="js/common.js"></script> <!-- 헤더 연결 -->
+    <script>
+        $(function () {
+
+
+            let colorBtn1 = $('.section10 .inner .item_wrap .item .text .color_btn01 button');
+            let colorBtn2 = $('.section10 .inner .item_wrap .item .text .color_btn02 button');
+            let colorImg1 = $('.section10 .inner .item_wrap .ear_img01 img');
+            let colorImg2 = $('.section10 .inner .item_wrap .ear_img02 img');
+
+            colorBtn1.click(function(){
+                colorBtn1.removeClass('on');
+                $(this).addClass('on');
+                colorImg1.removeClass('on');
+                colorImg1.eq($(this).index()).addClass('on');
+            });
+            colorBtn2.click(function(){
+                colorBtn2.removeClass('on');
+                $(this).addClass('on');
+                colorImg2.removeClass('on');
+                colorImg2.eq($(this).index()).addClass('on');
+            });
+
+            /* 스크롤 시 아이템 나타나기 */
+            window.addEventListener('scroll', () => {
+                let scrollBar = window.scrollY;
+                let section01Text = document.querySelector('.section01 h3');
+                let section03Text = document.querySelector('.section03 h3');
+                let section02 = document.querySelector('.section02');
+                let section02Item = document.querySelectorAll('.section02 .item');
+                let section04Item = document.querySelector('.section04 .item_wrap');
+                let section04Img = document.querySelector('.section04 img');
+
+                console.log(scrollBar);
+                if ($(window).width() >= 1024) {
+                    if (1400 < scrollBar) {
+                        section02.classList.add('scroll_on');
+
+                        section02Item.forEach((item, index) => {
+                            item.classList.add('on' + index, 'scroll_on');
+                        });
+                    } else {
+                        section02.classList.remove('scroll_on');
+                        section02Item.forEach((item) => {
+                            item.classList.remove('on', 'scroll_on');
+                        });
+                    }
+                    if (700 < scrollBar) {
+                        section01Text.classList.add('fade');
+                    } else {
+                        section01Text.classList.remove('fade');
+                    }
+                    if (3100 < scrollBar) {
+                        section03Text.classList.add('fade');
+                    } else {
+                        section03Text.classList.remove('fade');
+                    }
+                    if (3900 < scrollBar) {
+                        section04Item.classList.add('scroll_on');
+                        section04Img.classList.add('scroll_on');
+                    } else {
+                        section04Item.classList.remove('scroll_on');
+                        section04Img.classList.remove('scroll_on');
+                    }
+                } else {
+                    section02.classList.add('scroll_on');
+                    section02Item.forEach((item, index) => {
+                        item.classList.add('on' + index, 'scroll_on');
+                    });
+                    section01Text.classList.add('fade');
+                    section03Text.classList.add('fade');
+                    section04Item.classList.add('scroll_on');
+                    section04Img.classList.add('scroll_on');
+                }
+
+            });
+
+            /* section08 옵션 클릭 시 depth02와 순서값에 맞는 이미지 나타내기 */
+            let bg = $('.section08 .right div')
+            $('.section08 .option li').click(function () {
+                $('.depth02').removeClass('on');
+                $('.depth01').removeClass('on');
+                $('.section08 .option li').removeClass('on');
+                $(this).children().addClass('on');
+                $(this).addClass('on');
+
+                // console.log($(this).index())
+                bg.removeClass('on');
+                bg.eq($(this).index()).addClass('on');
+
+            });
+
+            $('.up_btn').click(function () {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 700)
+            });
+            $(window).scroll(function () {
+                /* scrollTop값이 0이면 up버튼 사라짐 */
+                if ($(window).scrollTop() > 0) {
+                    $('.up_btn').css({
+                        'display': 'block'
+                    })
+                } else {
+                    $('.up_btn').css({
+                        'display': 'none'
+                    })
+                    $('header').removeClass('on');
+                }
+            });
+
+            /* a 태그 클릭 막기 */
+            $('.section08 .option > li a').click(function (event) {
+                event.preventDefault();
+                // alert()
+            });
+
+            /* 스와이퍼 슬라이드 */
+            var swiper = new Swiper(".slide07", {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                coverflowEffect: {
+                    rotate: 0,
+                    stretch: 0,
+                    depth: 2000,
+                    modifier: 1,
+                    slideShadows: true,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                loop: true,
+                freemode: true,
+            });
+        }); //script end
+    </script>
+</head>
+
+<body>
+    <div class="up_btn">
+        <img src="img/icon/up.png" alt="위로가기">
+    </div>
+    <header id="header"></header><!-- #header end -->
+
+    <div class="header02">
+        <div class="inner">
+            <h1>Ear</h1>
+            <div class="text">
+                <p>개요</p>
+                <p>제품 사양</p>
+                <button>구입하기</button>
+            </div><!-- .text end -->
+        </div><!-- .inner end -->
+    </div><!-- .header02 end -->
+
+    <div class="main_visual">
+        <div class="inner">
+            <img src="img/main_ear.png" alt="낫싱이어">
+            <div class="text">
+                <div class="text_top">
+                    <h2>Ear</h2>
+                    <p>최고의 오디오 경험.</p>
+                </div><!-- .text_top end -->
+                <div class="text_btm">
+                    <strong>₩189,000</strong>
+                    <button>장바구니 담기</button>
+                </div><!-- .text btm end -->
+            </div>
+            <figure class="award">
+                <img src="img/audio.jpg" alt="오디오">
+            </figure>
+        </div><!-- .inner end -->
+    </div><!-- .main_visual end -->
+
+    <section class="section01">
+        <h3>Sound, evolved.</h3>
+    </section><!-- .section01 end -->
+
+    <section class="section02">
+        <div class="inner">
+            <div class="item">
+                <h3>일상을 특별하게.</h3>
+                <p><span>최고의 오디오</span> 경험을 선사합니다. 보다 풍부한 음색을 전달하기 위해
+                    세라믹과 같은 <span>프리미엄 소재</span>를 직접 선정하여 제작했습니다.</p>
+            </div><!-- .item end -->
+            <div class="item">
+                <h3>나만의 개성을 표현하다.</h3>
+                <p>낫싱은 단순한 기기가 아닌, 당신의 <span>개성</span>을 표현하는 하나의 도구입니다.
+                    낫싱과 함께라면 당신의 개성은 더욱 빛날 것입니다.</p>
+            </div><!-- .item end -->
+            <div class="item">
+                <h3>미래를 선도하는 혁신.</h3>
+                <p>낫싱은 <span>미래 기술</span>을 가장 먼저 <span>경험</span>할 수 있는 <span>기회</span>입니다. 끊임없는 연구 개발을
+                    통해 낫싱은 항상 한 발 앞서 나아갑니다. 낫싱과 함께 미래를 선도해 나가세요.</p>
+            </div><!-- .item end -->
+        </div><!-- .inner end -->
+    </section><!-- .section02 end -->
+
+    <section class="section03">
+        <h3>True mastery.</h3>
+    </section><!-- .section03 end -->
+
+    <section class="section04">
+        <div class="inner">
+            <div class="item_wrap">
+                <div class="item">
+                    <h3>단순함 속에 담긴 놀라운 기술.</h3>
+                    <p>낫싱 이어폰은 단순한 음향 기기가 아닙니다. 투명한 디자인 속에 감춰진
+                        놀라운 <span>고품질 사운드</span>는 당신의 귀를 사로잡을 것입니다. 마치 콘서트홀에
+                        있는 듯한 <span>생생한 음질</span>을 경험해 보세요.</p>
+                </div>
+                <div class="item">
+                    <h3>초소형이지만 강력하다. </h3>
+                    <p>새로운 <span>세라믹 진동판</span>과 함께 사용하여 각 이어버드 내의 <span>공기 흐름</span>을
+                        <span>10%</span> 증가시켰습니다. 이는 왜곡을 줄이고 더욱 <span>풍부한 선명도</span>를 제공합니다.
+                    </p>
+                </div>
+            </div><!-- .item_wrap end -->
+            <img src="img/section04_ear.png" alt="낫싱이어 블랙">
+        </div><!-- .inner end -->
+    </section><!-- .section04 end -->
+
+    <section class="section05">
+        <div class="inner">
+            <div class="item_wrap">
+                <div class="item">
+                    <h3>똑똑한 기능.</h3>
+                    <p>낫싱 이어폰은 <span>터치 컨트롤</span>과 음성 비서 등 다양한 기능을 지원합니다.
+                        한 손으로 모든 것을 제어하고, 음악을 듣거나 전화를 받는 등<span>
+                            다양한 작업</span>을 편리하게 수행할 수 있습니다.</p>
+                </div>
+                <div class="item">
+                    <h3>나만의 사운드.</h3>
+                    <p><span>맞춤형 사운드 설정</span>을 통해 나만의 음악 스타일을 만들 수 있습니다.
+                        다양한 <span>이퀄라이저 설정</span>과 <span>노이즈 캔슬링</span> 기능으로 더욱 풍부하고
+                        몰입감 있는 음악 감상을 즐겨보세요.</p>
+                </div>
+            </div><!-- .item_wrap end -->
+            <img src="img/section05.png" alt="낫싱이어">
+        </div><!-- .inner end -->
+    </section><!-- .section05 end -->
+
+    <section class="section06">
+        <div class="inner">
+            <div class="text">
+                <h3>더 발전된 노이즈 캔슬링.</h3>
+                <p>Ear 는 3단계 레벨의 <span>액티브 노이즈 캔슬링</span> 기능을 제공하며, 사용자 정의도 가능합니다.
+                    <span>Nothing X</span> 앱에서<span> '적응형' 모드</span>를 선택하면, Ear가 주변 환경을 실시간으로 분석하여 <span>자동</span>으로
+                    <span>적합한 노이즈 캔슬링</span> 레벨을 적용해줍니다.
+                    번거로운 설정 없이 완벽한 몰입 경험을 즐길 수 있습니다.
+                </p>
+            </div><!-- .text end -->
+            <video autoplay loop muted>
+                <source src="img/video/2e4e1fec693a4bbda82b3840456c987f.mp4" type="video/mp4">
+            </video>
+        </div><!-- .inner end -->
+    </section><!-- .section06 end -->
+
+    <section class="section07">
+        <div class="inner">
+            <h3>미래를 향한 기술, 지금 당신의 손에.</h3>
+            <div class="swiper slide07">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/slide01.png" alt="슬라이드01">
+                        <div class="text">
+                            <h4>저지연 모드</h4>
+                            <p>Nothing phone 게임 모드에서는
+                                자동으로 오디오 지연 시간이 감소하여
+                                더욱 부드러운 게임 환경을 경험할 수 있습니다.
+                                120ms 미만의 지연 시간을 제공합니다.</p>
+                        </div><!-- .text end -->
+                    </div>
+                    <div class="swiper-slide">
+                        <video autoplay loop muted>
+                            <source src="img/video/slide05.mp4" type="video/mp4">
+                        </video>
+                        <div class="text">
+                            <h4>고속 충전</h4>
+                            <p>고속 충전의 경우, Ear 는 고속 충전 10분으로 10시간 동안 음악을 재생할 수 있습니다
+                                (ANC가 꺼진 상태에서).</p>
+                        </div><!-- .text end -->
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/slide03.png" alt="슬라이드03">
+                        <div class="text">
+                            <h4>선명한 음성 기술</h4>
+                            <p>Ear는 주변 소음을 차단하고 사용자의 목소리를 선명하게 분리하는 최첨단 기술인 Clear Voice Technology를 탑재하여, 이동 중 통화를 마치 마주
+                                앉아 하는 대화처럼 자연스럽게 만들어줍니다. 새로운 통화용 마이크와 추가 공기 통로를 통해 Ear (2)보다 간섭량을 60%까지 줄였습니다.</p>
+                        </div><!-- .text end -->
+                    </div>
+                    <div class="swiper-slide">
+                        <video autoplay loop muted>
+                            <source src="img/video/slide06.mp4" type="video/mp4">
+                        </video>
+                        <div class="text">
+                            <h4>듀얼 커넥션</h4>
+                            <p>동시에 두 개의 기기 연결을 유지해보세요. 노트북에서 음악을 듣다가 휴대폰으로 걸려온 전화를 매끄럽게 받아보세요. 손도 대지 않고요.</p>
+                        </div><!-- .text end -->
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/slide04.jpg" alt="슬라이드05">
+                        <div class="text">
+                            <h4>최대 8.5시간 음악 재생</h4>
+                            <p>더 멀리 갈 수 있는 힘을 지닌 Ear는 1회 충전으로 Ear (2)보다 25% 더 오래 지속되는 배터리 수명을 제공합니다. 케이스에 충전하면 ANC 기능을 끈
+                                상태로 40.5시간 이상 지속적으로 사용할 수 있습니다.</p>
+                        </div><!-- .text end -->
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div><!-- .swiper end -->
+        </div><!-- .inner end -->
+    </section><!-- .section07 end -->
+
+    <section class="section08">
+        <div class="inner">
+            <h3>전부 내 마음대로.</h3>
+            <div class="item_wrap">
+                <div class="left">
+                    <ul class="option">
+                        <li class="on">
+                            <a href="#" class="depth01 on">8-Band EQ 의 이퀄라이저<img src="img/icon/Vector_2.png"
+                                    alt="셰브론"></a>
+                            <ul class="depth02 on">
+                                <li><a href="#">이퀄라이저는 나만의 맞춤형 음악을
+                                        만들 수 있도록 도와주는 강력한
+                                        도구입니다. 마치 그림의 밝기와 대비를
+                                        조절하듯, 이퀄라이저를 통해 저음, 중음,
+                                        고음을 자유롭게 조절하여 더욱 풍부하고
+                                        선명한 사운드를 경험할 수 있습니다.</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth01">이퀄라이저 프로필 공유<img src="img/icon/Vector_2.png" alt="셰브론"></a>
+                            <ul class="depth02">
+                                <li><a href="#">내가 만든 최고의 음악 설정을 친구들과 공유해 보세요. QR코드를 이용하여 직접 만든 이퀄라이저 설정을 다른 사람에게도 똑같이
+                                        적용할 수 있습니다.
+                                    </a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth01">개인 사운드 프로필<img src="img/icon/Vector_2.png" alt="셰브론"></a>
+                            <ul class="depth02">
+                                <li><a href="#">개인의 취향에 맞는 이퀄라이저 기능을 통해 음악 감상의 즐거움을 더욱 높여보세요.</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth01">액티브 노이즈 캔슬링<img src="img/icon/Vector_2.png" alt="셰브론"></a>
+                            <ul class="depth02">
+                                <li><a href="#">조용한 세상, 나만의 공간을 선물하세요. 비행기, 지하철, 카페 등 어떤 환경에서도 외부 소음을 완벽하게 차단하여 오롯이 음악에
+                                        집중할 수 있습니다.</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth01">사용자 맞춤 제어<img src="img/icon/Vector_2.png" alt="셰브론"></a>
+                            <ul class="depth02">
+                                <li><a href="#">원하는 대로 자유롭게 조절하여 최적의 환경을 만들 수 있습니다.</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth01">베이스 강화 알고리즘<img src="img/icon/Vector_2.png" alt="셰브론"></a>
+                            <ul class="depth02">
+                                <li><a href="#">베이스를 강화하여 더욱 풍부하고 깊이 있는 사운드를 경험하세요. 이퀄라이저 기능을 통해 저음을 강조하여 나만의 사운드를 만들 수
+                                        있습니다.</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="depth01">듀얼 커넥션<img src="img/icon/Vector_2.png" alt="셰브론"></a>
+                            <ul class="depth02">
+                                <li><a href="#">자유로운 기기 전환으로 끊김없는 연결을 경험하세요. 스마트폰과 태블릿을 동시에 연결하여 음악 감상과 통화를 자유롭게
+                                        즐기세요.</a></li>
+                            </ul>
+                        </li>
+                    </ul><!-- .option end -->
+                </div><!-- .left end -->
+                <div class="right">
+                    <div class="bg01 on"></div>
+                    <div class="bg02"></div>
+                    <div class="bg03"></div>
+                    <div class="bg04"></div>
+                    <div class="bg05"></div>
+                    <div class="bg06"></div>
+                    <div class="bg07"></div>
+                </div><!-- .right end -->
+            </div><!-- .item_wrap end -->
+        </div><!-- .inner end -->
+    </section><!-- .section08 end -->
+
+    <section class="section09">
+        <div class="inner">
+            <h3>ChatGPT와 함께.</h3>
+            <p>ChatGPT와 함께 언제 어디서나 물어보고 듣고 배우세요. Nothing 생태계에 최적화된 최초의 통합 솔루션입니다.
+                Nothing 이어버드와 Nothing 폰이 연결될 때만 가능합니다.
+            </p>
+            <div class="item_wrap">
+                <div class="item">
+                    <img src="img/section09_01.png" alt="보이스 컨트롤">
+                    <div class="text">
+                        <h4>보이스 컨트롤</h4>
+                        <p>Nothing X 앱을 통해 설정하여 어디서나
+                            음성으로 ChatGPT에 접근하세요. </p>
+                    </div>
+                </div><!-- .item end -->
+                <div class="item">
+                    <img src="img/section09_02.png" alt="위젯">
+                    <div class="text">
+                        <h4>위젯</h4>
+                        <p>필요한 답변을 더 빠르게 손쉽게 얻으세요.
+                            홈 스크린에서 텍스트, 음성 또는 이미지
+                            검색이 가능합니다.</p>
+                    </div>
+                </div><!-- .item end -->
+            </div><!-- .item_wrap end -->
+        </div><!-- .inner end -->
+    </section><!-- .section09 end -->
+
+    <section class="section10">
+        <div class="inner">
+            <h3>다른 Nothing 모델도 살펴보기.</h3>
+            <a href="#">Nothing 모두 살펴보기 <img src="img/icon/right_red.png" alt="화살표"></a>
+
+            <div class="item_wrap">
+                <div class="item ear_img01">
+                    <img src="img/ear(a)_white.webp" alt="낫싱이어(a)-화이트" class="on">
+                    <img src="img/ear(a)_black.webp" alt="낫싱이어(a)-블랙">
+                    <img src="img/section10_01.jpg" alt="낫싱이어(a)-옐로우">
+                    <div class="text">
+                        <h4>Ear(a)</h4>
+                        <strong>₩119,000</strong>
+                        <div class="color color_btn01">
+                            <button class="white on"><span>white</span></button>
+                            <button class="black"><span>black</span></button>
+                            <button class="yellow"><span>yellow</span></button>
+                        </div><!-- .color end -->
+                        <div class="button">
+                            <button>더 알아보기</button>
+                            <a href="#">구입하기 <img src="img/icon/right_red.png" alt="화살표"></a>
+                        </div><!-- .butten end -->
+                    </div><!-- .text end -->
+                    <div class="item02">
+                        <div class="box01">
+                            <img src="img/icon/배터리100px.png" alt="배터리">
+                            <p>최대 9.5시간 재생</p>
+                        </div><!-- .box01 end -->
+                        <div class="box02">
+                            X
+                        </div><!-- .box02 end -->
+                        <div class="box03">
+                            <img src="img/icon/방수.png" alt="방수">
+                            <p>IPX2 케이스</p>
+                        </div><!-- .box03 end -->
+                    </div><!-- .item end -->
+                </div><!-- .item end -->
+
+                <div class="item ear_img02">
+                    <img src="img/section10_02.jpg" alt="이어-화이트" class="on">
+                    <img src="img/ear_black.webp" alt="이어-블랙">
+                    <div class="text">
+                        <h4>Ear</h4>
+                        <strong>₩189,000</strong>
+                        <div class="color color_btn02">
+                            <button class="white on"><span>white</span></button>
+                            <button class="black"><span>black</span></button>
+                        </div><!-- .color end -->
+                        <div class="button">
+                            <p>현재 보고 있는 모델</p>
+                            <a href="#">구입하기 <img src="img/icon/right_red.png" alt="화살표"></a>
+                        </div><!-- .butten end -->
+                    </div><!-- .text end -->
+                    <div class="item02">
+                        <div class="box01">
+                            <img src="img/icon/배터리100px.png" alt="배터리">
+                            <p>최대 8.5시간 재생</p>
+                        </div><!-- .box01 end -->
+                        <div class="box02">
+                            LHDC 5.0
+                        </div><!-- .box02 end -->
+                        <div class="box03">
+                            <img src="img/icon/방수.png" alt="방수">
+                            <p>IP55 케이스</p>
+                        </div><!-- .box03 end -->
+                    </div><!-- .item end -->
+                </div><!-- .item end -->
+            </div><!-- .item_wrap end -->
+
+        </div><!-- .inner end -->
+    </section><!-- .section10 end -->
+
+    <footer class="footer">
+        <div class="inner">
+            <div class="left">
+                <div class="item_wrap">
+                    <div class="item">
+                        <ul>
+                            <strong>제품</strong>
+                            <li><a href="#">Phone (2a)</a></li>
+                            <li><a href="#">Phone (2)</a></li>
+                            <li><a href="#">Ear (a)</a></li>
+                            <li><a href="#">Ear</a></li>
+                            <li><a href="#">Apparel</a></li>
+                            <li><a href="#">액세서리</a></li>
+                        </ul>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <ul>
+                            <strong>소개</strong>
+                            <li><a href="#">회사 소개</a></li>
+                            <li><a href="#">채용</a></li>
+                            <li><a href="#">커뮤니티</a></li>
+                            <li><a href="#">지속 가능성</a></li>
+                            <li><a href="#">비즈니스 문의</a></li>
+                            <li><a href="#">보도자료</a></li>
+                        </ul>
+                    </div><!-- .item end -->
+                    <div class="item">
+                        <ul>
+                            <strong>지원</strong>
+                            <li><a href="#">지원 센터</a></li>
+                            <li><a href="#">문의 하기</a></li>
+                            <li><a href="#">매장 찾기</a></li>
+                            <li><a href="#">개인정보 보호</a></li>
+                        </ul>
+                    </div><!-- .item end -->
+                </div><!-- .item_wrap end -->
+            </div><!-- .left end -->
+            <div class="right">
+
+                <h4>뉴스레터 구독</h4>
+
+                <div class="email">
+                    <input type="email" required>
+                    <label>
+                        <p>e-mail을 입력하세요.</p>
+                    </label>
+                    <a href="#"><img src="img/icon/right_white.png" alt="제출하기"></a>
+                    <span></span>
+                </div><!-- .email end -->
+
+                <div class="check">
+                    <ul>
+                        <li>
+                            <input type="checkbox" name="check2" id="agree1">
+                            <label for="agree1">
+                                개인정보 수집 및 이용에 동의합니다.
+                            </label>
+                        </li>
+                        <li>
+                            <input type="checkbox" name="check2" id="agree2">
+                            <label for="agree2">
+                                NOTHING 마케팅 커뮤니케이션 수신에 동의합니다.
+                            </label>
+                        </li>
+                </div>
+                </ul><!-- .check end -->
+            </div><!-- .right end -->
+        </div><!-- .inner end -->
+        <div class="bottom">
+            <ul>
+                <li><a href="#">개인정보 처리방침</a></li>
+                <p>｜</p>
+                <li><a href="#">이용 약관</a></li>
+                <p>｜</p>
+                <li><a href="#">판매 및 환불</a></li>
+                <p>｜</p>
+                <li><a href="#">법적 고지</a></li>
+            </ul>
+        </div><!-- .bottom end -->
+    </footer><!-- .footer end -->
+</body>
+
+</html>
