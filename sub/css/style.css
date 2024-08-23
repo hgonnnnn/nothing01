@@ -1271,6 +1271,9 @@ input[type="checkbox"]:checked:after {
 
 }
 @media screen and (max-width: 430px) {
+    .section07 {
+        display: block;
+    }
     .section09 .inner .item_wrap .item .text p {
         font-size: 14px;
     }
