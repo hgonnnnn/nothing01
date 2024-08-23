@@ -1135,6 +1135,7 @@ input[type="checkbox"]:checked:after {
     }
     .section03 {
         background: url('../img/mobile02.png')center center no-repeat fixed;
+        background-size: cover;
     }
     .section02 .inner {
         display: block;
@@ -1172,6 +1173,7 @@ input[type="checkbox"]:checked:after {
     .section05 .inner {
         flex-direction: column-reverse;
         background: url('../img/mobile03.png');
+        background-size: cover;
         background-blend-mode: color;
         background-color: rgba(0, 0, 0, 0.85);
     }
@@ -1188,7 +1190,15 @@ input[type="checkbox"]:checked:after {
     }
     .section08 .inner .item_wrap {
         flex-direction: column-reverse;
-        row-gap: 10px;
+        row-gap: 30px;
+    }
+    .section08 .inner .item_wrap .right div.bg01,
+    .section08 .inner .item_wrap .right div.bg02,
+    .section08 .inner .item_wrap .right div.bg03,
+    .section08 .inner .item_wrap .right div.bg04,
+    .section08 .inner .item_wrap .right div.bg05,
+    .section08 .inner .item_wrap .right div.bg06 {
+        background-size: 100%;
     }
     .section08 .inner .item_wrap .right {
         margin: 0 auto;
