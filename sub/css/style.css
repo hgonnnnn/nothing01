@@ -591,7 +591,7 @@ body {
     background: url('../img/bg.01.webp') center center/ cover no-repeat;
     background-size: 70%;
 }
-.section08 .inner .item_wrap .right div.bg02.on {
+.section08 .inner .item_wrap .right div.bg02 {
     background: url('../img/bg.02.webp') center center/ cover no-repeat;
     background-size: 70%;
 }
