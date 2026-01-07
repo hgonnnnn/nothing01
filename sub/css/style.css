@@ -56,6 +56,9 @@
     font-style: normal;
     font-display: swap;
 }
+html {
+    overflow-x: hidden;
+}
 body.on {
     overflow: hidden; /* 스크롤 막기 */
 }
